@@ -6,7 +6,7 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 20:51:39 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/20 03:19:43 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/20 03:30:15 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 #include "push_swap.h"
 #include "parser/parser.h"
 
-long
-	get_strlen(const char *str)
+long get_strlen(const char *str)
 {
-	long	i;
+	long i;
 
 	i = 0;
 	while (str[i])
@@ -25,10 +24,9 @@ long
 	return i;
 }
 
-int
-	check_num(const char *str)
+int check_num(const char *str)
 {
-	int		i;
+	int i;
 
 	i = 0;
 	if (str[i] == '-')
@@ -43,11 +41,12 @@ int
 }
 
 long
-	chars_to_long(const char *s)
+	stol(const char *s)
 {
-	t_ul		i;
-	int			minus;
-	long		result;
+	t_ul	i;
+	int		minus;
+	long	result;
+	long	changing;
 
 	result = 0;
 	minus = 1;
@@ -59,18 +58,20 @@ long
 	}
 	while (s[i])
 	{
-		result = result * 10 + (s[i] - '0');
+		changing = result * 10 + (s[i] - '0');
+		if (changing > INT_MAX || changing * minus < INT_MIN)
+			free_program_and_exit(1);
+		result = changing;
 		i++;
 	}
 	return (result * minus);
 }
 
-
 int
 	main_one_arg(char *argv1)
 {
-	long	i;
-	long	len;
+	long i;
+	long len;
 
 	program()->input = argv1;
 	parse_b();
@@ -88,19 +89,19 @@ int
 int
 	main_many_arg(int argc, char *argv[])
 {
-	long	i;
-	long	num;
-	long	len;
+	long i;
+	long num;
+	long len;
 
 	i = 1;
 	while (i < argc)
 	{
 		if (!check_num(argv[i]))
 			free_program_and_exit(1);
-		num = chars_to_long(argv[i]);
+		num = stol(argv[i]);
 		if (num >= INT_MAX)
 			free_program_and_exit(1);
-		push_new(&program()->b, chars_to_long(argv[i]));
+		push_new(&program()->b, stol(argv[i]));
 		i++;
 	}
 	i = -1;

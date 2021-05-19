@@ -6,7 +6,7 @@
 #    By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/27 17:17:01 by taehokim          #+#    #+#              #
-#    Updated: 2021/05/19 21:16:13 by taehokim         ###   ########.fr        #
+#    Updated: 2021/05/20 03:03:28 by taehokim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,14 @@ SOURCES = \
 	src/memory.c \
 	src/program.c \
 	src/stack.c \
-	src/op.c \
+	src/op1.c \
+	src/op2.c \
+	src/op3.c \
 	src/parse.c \
-	src/resolve.c \
+	src/resolve_atop.c \
+	src/resolve_btop.c \
 	src/sort.c \
-	src/pivot.c \
+	src/calc_util.c \
 	src/fr_read.c \
 	src/parser/abort.c \
 	src/parser/converter.c \
@@ -47,12 +50,13 @@ MAINOBJECTS = $(MAIN:.c=.o)
 RM = rm -rf
 INC_DIR = -I./src
 FLAGS = -Wall -Wextra -Werror -g
+LIBS = -lm
 CC = gcc
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS) $(MAINOBJECTS)
-	$(CC) $(FLAGS) $^ test.c -o $@
+	$(CC) $(FLAGS) $^ test.c -o $@ $(LIBS)
 
 $(OBJECTS): %.o: %.c
 	$(CC) -c $(FLAGS) $< -o $@ $(INC_DIR)
@@ -69,7 +73,7 @@ clean:
 
 
 test: $(OBJECTS)
-	$(CC) $(FLAGS) $(LIBS) $^ test.c -o do_test
+	$(CC) $(FLAGS) $^ test.c -o do_test $(LIBS)
 
 re: fclean all
 

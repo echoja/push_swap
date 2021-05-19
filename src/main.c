@@ -6,10 +6,11 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 20:51:39 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/19 21:49:27 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/20 03:19:43 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "push_swap.h"
 #include "parser/parser.h"
 
@@ -24,7 +25,8 @@ long
 	return i;
 }
 
-int	check_num(const char *str)
+int
+	check_num(const char *str)
 {
 	int		i;
 
@@ -63,43 +65,62 @@ long
 	return (result * minus);
 }
 
+
+int
+	main_one_arg(char *argv1)
+{
+	long	i;
+	long	len;
+
+	program()->input = argv1;
+	parse_b();
+	i = -1;
+	len = program()->b.len;
+	while (++i < len)
+		smove(&program()->a, &program()->b);
+	init_sorted_arr_from_a();
+	if (is_duplicated(program()->arr))
+		free_program_and_exit(1);
+	resolve_atop(program()->a.len, LONG_MIN, LONG_MAX);
+	return (0);
+}
+
+int
+	main_many_arg(int argc, char *argv[])
+{
+	long	i;
+	long	num;
+	long	len;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (!check_num(argv[i]))
+			free_program_and_exit(1);
+		num = chars_to_long(argv[i]);
+		if (num >= INT_MAX)
+			free_program_and_exit(1);
+		push_new(&program()->b, chars_to_long(argv[i]));
+		i++;
+	}
+	i = -1;
+	len = program()->b.len;
+	while (++i < len)
+		smove(&program()->a, &program()->b);
+	init_sorted_arr_from_a();
+	if (is_duplicated(program()->arr))
+		free_program_and_exit(1);
+	resolve_atop(program()->a.len, LONG_MIN, LONG_MAX);
+	return (0);
+}
+
 int
 	main(int argc, char *argv[])
 {
-	int		i;
-	long	num;
-
 	if (argc == 2)
-	{
-		program()->input = argv[1];
-		parse_b();
-		i = -1;
-		num = program()->b.len;
-		while (++i < num)
-			smove(&program()->a, &program()->b);
-		init_sorted_arr_from_a();
-		resolve_atop(program()->a.len, LONG_MIN, LONG_MAX);
-	}
+		main_one_arg(argv[1]);
 	else if (argc >= 3)
-	{
-		i = 1;
-		while (i < argc)
-		{
-			if (!check_num(argv[i]))
-				return (1); // todo: error message
-			num = chars_to_long(argv[i]);
-			if (num >= INT_MAX)
-				return (1); // todo: error message
-			push_new(&program()->b, chars_to_long(argv[i]));
-			i++;
-		}
-		i = -1;
-		num = program()->b.len;
-		while (++i < num)
-			smove(&program()->a, &program()->b);
-		init_sorted_arr_from_a();
-		resolve_atop(program()->a.len, LONG_MIN, LONG_MAX);
-	}
+		main_many_arg(argc, argv);
 	resolve_lazy();
-	// print_stack(program()->a);
+	return (0);
 }

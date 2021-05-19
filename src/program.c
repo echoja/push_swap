@@ -6,19 +6,19 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 21:03:20 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/19 20:55:26 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/20 02:37:53 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_program *program(void)
+t_program
+	*program(void)
 {
 	static t_program	instance;
 
 	return (&instance);
 }
-
 
 int
 	is_duplicated(t_arr arr)

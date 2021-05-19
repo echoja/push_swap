@@ -6,11 +6,12 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 21:00:09 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/18 21:59:57 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/20 03:14:49 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "push_swap.h"
 
 int	m(void *target, size_t size)
 {
@@ -34,4 +35,19 @@ void
 		free(*pt);
 		*pt = 0;
 	}
+}
+
+
+void
+	free_program_and_exit(int code)
+{
+	long	dumb;
+
+	while (program()->a.top)
+		pop_free(&program()->a, &dumb);
+	while (program()->b.top)
+		pop_free(&program()->b, &dumb);
+	safe_free(&program()->arr.ds);
+	write_error_chars("Error\n");
+	exit(code);
 }

@@ -6,7 +6,7 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/25 18:46:51 by taehokim          #+#    #+#             */
-/*   Updated: 2021/04/27 17:48:42 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/20 01:31:31 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,7 @@ int		iterate_double(char c)
 void	skip_blank(void)
 {
 	char		c;
-	t_tokenizer	*tknzr;
 
-	tknzr = &parser()->tknzr;
 	c = raw(parser()->tknzr.reading)[0];
 	if (c == ' ')
 	{

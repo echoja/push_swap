@@ -6,12 +6,33 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 21:11:06 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/19 21:48:45 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/20 02:45:39 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <unistd.h>
 #include "parser/parser.h"
 #include "push_swap.h"
+
+void
+	write_error_chars(const char *chars)
+{
+	long	len;
+
+	len = 0;
+	while (chars[len])
+		len++;
+	write(2, chars, len);
+}
+
+void
+	error_parser(void)
+{
+	finish_parser();
+	write_error_chars("Error\n");
+	exit(1);
+}
 
 void
 	parse_numbers(void)
@@ -28,7 +49,7 @@ void
 		else if (token.type == TOKEN_END)
 			break ;
 		else
-			abort_parser("should be a number", ERR_PARSE);
+			error_parser();
 	}
 }
 

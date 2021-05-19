@@ -1,0 +1,6 @@
+*.o
+.vscode
+*.dSYM
+do_test
+push_swap
+checker

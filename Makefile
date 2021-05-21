@@ -6,14 +6,16 @@
 #    By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/27 17:17:01 by taehokim          #+#    #+#              #
-#    Updated: 2021/05/21 22:15:35 by taehokim         ###   ########.fr        #
+#    Updated: 2021/05/22 03:03:46 by taehokim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME = push_swap checker
 
 SOURCES = \
 	src/array.c \
+	src/common.c \
+	src/check.c \
 	src/memory.c \
 	src/program.c \
 	src/stack.c \
@@ -44,11 +46,13 @@ SOURCES = \
 	src/parser/tokenizer_try2.c \
 	src/parser/init.c
 
-
-MAIN = src/main.c
+PUSH_SWAP_MAIN_SRC = src/push_swap.c
+CHECKER_MAIN_SRC = src/checker.c
 
 OBJECTS = $(SOURCES:.c=.o)
-MAINOBJECTS = $(MAIN:.c=.o)
+PUSH_SWAP_MAIN_OBJ = $(PUSH_SWAP_MAIN_SRC:.c=.o)
+CHECKER_MAIN_OBJ = $(CHECKER_MAIN_SRC:.c=.o)
+
 RM = rm -rf
 INC_DIR = -I./src
 FLAGS = -Wall -Wextra -Werror
@@ -57,22 +61,29 @@ CC = gcc
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(MAINOBJECTS)
-	$(CC) $(FLAGS) $^ test.c -o $@ $(LIBS)
-
 $(OBJECTS): %.o: %.c
 	$(CC) -c $(FLAGS) $< -o $@ $(INC_DIR)
 
-$(MAINOBJECTS): %.o: %.c
+$(PUSH_SWAP_MAIN_OBJ): %.o: %.c
 	$(CC) -c $(FLAGS) $< -o $@ $(INC_DIR)
 
+$(CHECKER_MAIN_OBJ): %.o: %.c
+	$(CC) -c $(FLAGS) $< -o $@ $(INC_DIR)
+
+push_swap: $(OBJECTS) $(PUSH_SWAP_MAIN_OBJ)
+	$(CC) $(FLAGS) $^ -o $@ $(INC_DIR) $(LIBS)
+
+checker: $(OBJECTS) $(CHECKER_MAIN_OBJ)
+	$(CC) $(FLAGS) $^ -o $@ $(INC_DIR) $(LIBS)
+
+$(MAINOBJECTS): %.o: %.c
+	$(CC) -c $(FLAGS) $< -o $@ $(INC_DIR)
 
 fclean: clean
 	$(RM) $(NAME)
 
 clean:
-	$(RM) $(OBJECTS) $(MAINOBJECTS) test.o
-
+	$(RM) $(OBJECTS) $(PUSH_SWAP_MAIN_OBJ) $(CHECKER_MAIN_OBJ) test.o
 
 test: $(OBJECTS)
 	$(CC) $(FLAGS) $^ test.c -o do_test $(LIBS)

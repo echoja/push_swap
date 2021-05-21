@@ -6,7 +6,7 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 20:57:03 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/21 22:26:28 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/22 03:44:01 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <stddef.h>
 # include <limits.h>
 # include "push_swap_types.h"
+
+# define READ_BUF_SIZE 1024
 
 int				m(void *target, size_t size);
 
@@ -34,8 +36,13 @@ t_stack_item	*pop(t_stack *stack);
 void			write_chars(const char *chars);
 void			write_error_chars(const char *chars);
 
-void			parse_b(void);
+int				parse_b(void);
 t_arr			arr_from_stack(t_stack stack);
+int				check_sorted(void);
+int				check_num(const char *str);
+int				check_line(int len, const char *b);
+void			preprocess(int argc, char *argv[]);
+int				merge_sort(long *arr, long left, long right);
 
 /*
 ** arr should be sorted!
@@ -91,6 +98,5 @@ void			resolve_lazy(void);
 
 void			print_stack(t_stack stack);
 void			print_arr(t_arr arr);
-int				merge_sort(long *arr, long left, long right);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 21:11:06 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/20 02:45:39 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/22 00:31:54 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ void
 	error_parser(void)
 {
 	finish_parser();
-	write_error_chars("Error\n");
-	exit(1);
+	free_program_and_exit(1);
 }
 
-void
+int
 	parse_numbers(void)
 {
 	t_token	token;
+	long	num;
 
 	while (1)
 	{
@@ -45,18 +45,27 @@ void
 		if (token.type == TOKEN_NEWLINE)
 			continue ;
 		else if (token.type == TOKEN_INT)
-			push_new(&program()->b, str_to_long(token.str));
+		{
+			num = str_to_long(token.str);
+			push_new(&program()->b, num);
+			if (num < INT_MIN || num > INT_MAX)
+				return (0);
+		}
 		else if (token.type == TOKEN_END)
 			break ;
 		else
 			error_parser();
 	}
+	return (1);
 }
 
-void
+int
 	parse_b(void)
 {
+	int	result;
+
 	init_parser_fd(0, "stdin");
-	parse_numbers();
+	result = parse_numbers();
 	finish_parser();
+	return (result);
 }

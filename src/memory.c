@@ -6,7 +6,7 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 21:00:09 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/21 22:17:14 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/22 02:18:12 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void
 	while (program()->b.top)
 		pop_free(&program()->b, &dumb);
 	safe_free(&program()->arr.ds);
-	write_error_chars("Error\n");
+	if (code != 0)
+		write_error_chars("Error\n");
 	exit(code);
 }

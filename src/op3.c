@@ -6,7 +6,7 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 13:53:34 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/20 03:01:35 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/22 03:21:53 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,21 @@ void
 void
 	resolve_lazy(void)
 {
-	if (program()->called_ra)
-		write_chars("ra\n");
-	if (program()->called_rb)
-		write_chars("rb\n");
-	if (program()->called_rra)
-		write_chars("rra\n");
-	if (program()->called_rrb)
-		write_chars("rrb\n");
-	if (program()->called_sa)
-		write_chars("sa\n");
-	if (program()->called_sb)
-		write_chars("sb\n");
+	if (program()->op_echo)
+	{
+		if (program()->called_ra)
+			write_chars("ra\n");
+		if (program()->called_rb)
+			write_chars("rb\n");
+		if (program()->called_rra)
+			write_chars("rra\n");
+		if (program()->called_rrb)
+			write_chars("rrb\n");
+		if (program()->called_sa)
+			write_chars("sa\n");
+		if (program()->called_sb)
+			write_chars("sb\n");
+	}
 	program()->called_ra = 0;
 	program()->called_rb = 0;
 	program()->called_rra = 0;
@@ -53,5 +56,6 @@ void
 	resolve_lazy();
 	srrotate(&program()->a);
 	srrotate(&program()->b);
-	write_chars("rrr\n");
+	if (program()->op_echo)
+		write_chars("rrr\n");
 }

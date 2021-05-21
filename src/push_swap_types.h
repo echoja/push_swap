@@ -6,7 +6,7 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 02:18:16 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/20 16:14:19 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/22 03:17:49 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ struct	s_program
 	int		called_rb;
 	int		called_sa;
 	int		called_sb;
+	int		op_echo;
 };
 
 struct	s_calc

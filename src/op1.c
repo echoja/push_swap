@@ -6,7 +6,7 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 02:27:19 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/20 02:42:21 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/22 03:21:03 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ void
 	if (program()->called_sb)
 	{
 		program()->called_sb = 0;
-		return (write_chars("ss\n"));
+		if (program()->op_echo)
+			write_chars("ss\n");
+		return ;
 	}
 	resolve_lazy();
 	program()->called_sa = 1;
@@ -33,7 +35,9 @@ void
 	if (program()->called_sa)
 	{
 		program()->called_sa = 0;
-		return (write_chars("ss\n"));
+		if (program()->op_echo)
+			write_chars("ss\n");
+		return ;
 	}
 	resolve_lazy();
 	program()->called_sb = 1;
@@ -45,7 +49,8 @@ void
 	resolve_lazy();
 	sswap(&program()->a);
 	sswap(&program()->b);
-	write(1, "ss\n", 3);
+	if (program()->op_echo)
+		write(1, "ss\n", 3);
 }
 
 void
@@ -53,7 +58,8 @@ void
 {
 	resolve_lazy();
 	smove(&program()->a, &program()->b);
-	write(1, "pa\n", 3);
+	if (program()->op_echo)
+		write(1, "pa\n", 3);
 }
 
 void
@@ -61,5 +67,6 @@ void
 {
 	resolve_lazy();
 	smove(&program()->b, &program()->a);
-	write(1, "pb\n", 3);
+	if (program()->op_echo)
+		write(1, "pb\n", 3);
 }

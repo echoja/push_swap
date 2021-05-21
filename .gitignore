@@ -3,7 +3,7 @@
 *.dSYM
 do_test
 push_swap
-# checker
+checker
 # checker*
 # *.cpp
 # random_numbers

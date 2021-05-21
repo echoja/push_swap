@@ -6,14 +6,13 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 20:57:03 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/21 22:02:13 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/21 22:26:28 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stddef.h>
-# include <stdio.h>
 # include <limits.h>
 # include "push_swap_types.h"
 
@@ -50,6 +49,7 @@ int				is_duplicated(t_arr arr);
 void			get_appropriate_pivot
 					(t_arr arr, long *small, long *big, t_pvipt input);
 void			init_calc(t_calc *c, long min, long max);
+long			get_strlen(const char *str);
 
 int				push_new(t_stack *stack, long data);
 int				pop_free(t_stack *stack, long *data);
@@ -84,7 +84,6 @@ void			resolve_atop3_exact(long d1, long d2, long d3);
 void			resolve_atop3(t_stack_item *top, t_calc c);
 void			resolve_btop(long len, long min, long max);
 void			resolve_lazy(void);
-
 
 /*
 ** test functions

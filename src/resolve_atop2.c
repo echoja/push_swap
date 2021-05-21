@@ -6,7 +6,7 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 21:55:47 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/21 21:56:15 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/21 22:19:24 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,13 @@ void
 		if (d3 > d2)
 			sa();
 	}
+	else if (d3 > d2)
+		ra();
 	else
-		if (d3 > d2)
-			ra();
-		else
-		{
-			rra();
-			sa();
-		}
+	{
+		rra();
+		sa();
+	}
 }
 
 void

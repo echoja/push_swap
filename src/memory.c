@@ -6,14 +6,15 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 21:00:09 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/20 03:14:49 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/21 22:17:14 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "push_swap.h"
 
-int	m(void *target, size_t size)
+int
+	m(void *target, size_t size)
 {
 	void	**pt;
 
@@ -36,7 +37,6 @@ void
 		*pt = 0;
 	}
 }
-
 
 void
 	free_program_and_exit(int code)

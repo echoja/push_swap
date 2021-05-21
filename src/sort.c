@@ -6,13 +6,14 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:02:53 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/18 22:23:37 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/21 22:25:18 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_long_arr(long *arr, long a, long b)
+void
+	swap_long_arr(long *arr, long a, long b)
 {
 	long	temp;
 
@@ -52,7 +53,7 @@ int
 	long	i;
 
 	new_len = right - left + 1;
-	if(!m(result, sizeof(long) * new_len))
+	if (!m(result, sizeof(long) * new_len))
 		return (0);
 	i = 0;
 	while (i < new_len)
@@ -78,9 +79,11 @@ int
 	}
 	c->i = c->left - 1;
 	while (++c->i <= c->right)
-		if ((ch_left[c->li] < ch_right[c->ri] && c->li <= c->lb) || c->ri > c->rb)
+		if ((ch_left[c->li] < ch_right[c->ri] && c->li <= c->lb) ||
+				c->ri > c->rb)
 			arr[c->i] = ch_left[c->li++];
-		else if ((ch_left[c->li] >= ch_right[c->ri] && c->ri <= c->rb) || c->li > c->lb)
+		else if ((ch_left[c->li] >= ch_right[c->ri] &&
+				c->ri <= c->rb) || c->li > c->lb)
 			arr[c->i] = ch_right[c->ri++];
 	safe_free(&ch_left);
 	safe_free(&ch_right);
@@ -110,5 +113,5 @@ int
 	c.mid = mid;
 	c.left = left;
 	c.right = right;
-	return (merge_sort2(arr,ch_left, ch_right, &c));
+	return (merge_sort2(arr, ch_left, ch_right, &c));
 }

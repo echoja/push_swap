@@ -6,7 +6,7 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 20:51:39 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/20 16:42:03 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/21 22:24:24 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,8 @@
 #include "push_swap.h"
 #include "parser/parser.h"
 
-long get_strlen(const char *str)
-{
-	long i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return i;
-}
-
-int check_num(const char *str)
+int
+	check_num(const char *str)
 {
 	int i;
 

@@ -6,15 +6,26 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 22:27:59 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/20 16:18:49 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/21 22:25:34 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "limits.h"
 
+long
+	get_strlen(const char *str)
+{
+	long i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
 void
-	get_appropriate_pivot(t_arr arr, long *small, long* big, t_pvipt input)
+	get_appropriate_pivot(t_arr arr, long *small, long *big, t_pvipt input)
 {
 	long	i;
 	int		small_checked;
@@ -35,7 +46,7 @@ void
 		if (arr.ds[i] > input.max)
 		{
 			ri = i;
-			break;
+			break ;
 		}
 		i++;
 	}
@@ -51,9 +62,7 @@ void
 
 	input.min = min;
 	input.max = max;
-	get_appropriate_pivot(program()->arr, &c->piv_low, &c->piv_high, input); // todo: need check
-	// c->piv_low = top->prev->data;
-	// c->piv_high = top->data;
+	get_appropriate_pivot(program()->arr, &c->piv_low, &c->piv_high, input);
 	if (c->piv_high < c->piv_low)
 	{
 		sw = c->piv_high;

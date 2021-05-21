@@ -6,18 +6,18 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:16:17 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/21 21:56:17 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/21 22:21:54 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
 void
 	resolve_atop_divide_loop(t_stack_item *comp, t_calc *c)
 {
 	pb();
-	if (c->start_blen) {
+	if (c->start_blen)
+	{
 		if (comp->data > c->piv_low)
 		{
 			rb();

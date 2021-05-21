@@ -6,13 +6,14 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 21:06:15 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/17 21:20:47 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/21 22:26:59 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-void		init_parser(const char *path)
+void
+	init_parser(const char *path)
 {
 	t_parser	*p;
 	int			fd;
@@ -26,7 +27,8 @@ void		init_parser(const char *path)
 	init_tokenizer();
 }
 
-void			init_parser_fd(int fd, const char *name)
+void
+	init_parser_fd(int fd, const char *name)
 {
 	t_parser	*p;
 

@@ -6,7 +6,7 @@
 #    By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/27 17:17:01 by taehokim          #+#    #+#              #
-#    Updated: 2021/05/21 21:54:21 by taehokim         ###   ########.fr        #
+#    Updated: 2021/05/21 22:15:35 by taehokim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SOURCES = \
 	src/memory.c \
 	src/program.c \
 	src/stack.c \
+	src/stack_op.c \
 	src/op1.c \
 	src/op2.c \
 	src/op3.c \

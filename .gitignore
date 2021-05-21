@@ -4,7 +4,9 @@
 do_test
 push_swap
 checker
-# checker*
-# *.cpp
-# random_numbers
-# push_swap_tester.bash
+checker*
+*.cpp
+random_numbers
+push_swap_tester.bash
+a.out
+test.c

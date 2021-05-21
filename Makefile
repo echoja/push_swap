@@ -6,7 +6,7 @@
 #    By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/27 17:17:01 by taehokim          #+#    #+#              #
-#    Updated: 2021/05/22 03:03:46 by taehokim         ###   ########.fr        #
+#    Updated: 2021/05/22 04:18:54 by taehokim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,8 +85,6 @@ fclean: clean
 clean:
 	$(RM) $(OBJECTS) $(PUSH_SWAP_MAIN_OBJ) $(CHECKER_MAIN_OBJ) test.o
 
-test: $(OBJECTS)
-	$(CC) $(FLAGS) $^ test.c -o do_test $(LIBS)
 
 re: fclean all
 

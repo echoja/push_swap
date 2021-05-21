@@ -6,7 +6,7 @@
 #    By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/27 17:17:01 by taehokim          #+#    #+#              #
-#    Updated: 2021/05/20 03:03:28 by taehokim         ###   ########.fr        #
+#    Updated: 2021/05/21 21:54:21 by taehokim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SOURCES = \
 	src/op2.c \
 	src/op3.c \
 	src/parse.c \
-	src/resolve_atop.c \
+	src/resolve_atop1.c \
+	src/resolve_atop2.c \
 	src/resolve_btop.c \
 	src/sort.c \
 	src/calc_util.c \
@@ -49,7 +50,7 @@ OBJECTS = $(SOURCES:.c=.o)
 MAINOBJECTS = $(MAIN:.c=.o)
 RM = rm -rf
 INC_DIR = -I./src
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 LIBS = -lm
 CC = gcc
 

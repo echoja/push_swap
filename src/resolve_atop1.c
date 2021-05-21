@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   resolve_atop.c                                     :+:      :+:    :+:   */
+/*   resolve_atop1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 19:16:17 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/20 03:00:53 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/21 21:56:17 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void
-	resolve_atop3(t_stack_item *top)
-{
-	long			d1;
-	long			d2;
-	long			d3;
 
-	d1 = top->prev->prev->data;
-	d2 = top->prev->data;
-	d3 = top->data;
-	if (d1 > d2 && d1 > d3)
-	{
-		if (d2 < d3)
-			sa();
-		return ;
-	}
-	if (d2 < d3 && d1 < d3)
-		sa();
+void
+	resolve_atop_divide_loop(t_stack_item *comp, t_calc *c)
+{
 	pb();
-	sa();
-	pa();
-	if (d1 < d2 && d1 < d3)
-		sa();
+	if (c->start_blen) {
+		if (comp->data > c->piv_low)
+		{
+			rb();
+			c->len2++;
+		}
+		else
+			c->len1++;
+	}
+	else
+	{
+		if (comp->data > c->piv_low)
+			c->len2++;
+		else
+		{
+			rb();
+			c->len1++;
+		}
+	}
 }
 
 void
@@ -48,16 +49,7 @@ void
 	while (++i < len)
 	{
 		if (comp->data < c->piv_high)
-		{
-			pb();
-			if (comp->data > c->piv_low)
-			{
-				rb();
-				c->len2++;
-			}
-			else
-				c->len1++;
-		}
+			resolve_atop_divide_loop(comp, c);
 		else
 		{
 			ra();
@@ -75,9 +67,9 @@ void
 	i = 0;
 	while (i < c.len2 || i < c.len3)
 	{
-		if (i < c.len2)
+		if (i < c.len2 && c.start_blen)
 			rrb();
-		if (i < c.len3)
+		if (i < c.len3 && c.len3 != program()->a.len)
 			rra();
 		i++;
 	}
@@ -98,12 +90,17 @@ void
 			sa();
 		return ;
 	}
-	if (len == 3)
-		return (resolve_atop3(top));
 	init_calc(&c, min, max);
+	if (len == 3)
+		return (resolve_atop3(top, c));
 	resolve_atop_divide(len, &c);
 	resolve_atop_move(c);
 	resolve_atop(c.len3, c.piv_high, max);
-	resolve_btop(c.len2, c.piv_low, c.piv_high - 1);
-	resolve_btop(c.len1, min, c.piv_low - 1);
+	if (program()->b.len == c.len2 + c.len1 && program()->b.len <= 3)
+		resolve_small_b(program()->b.len, program()->b.top);
+	else
+	{
+		resolve_btop(c.len2, c.piv_low, c.piv_high - 1);
+		resolve_btop(c.len1, min, c.piv_low - 1);
+	}
 }

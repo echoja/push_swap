@@ -6,7 +6,7 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 20:57:03 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/20 03:14:03 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/21 22:02:13 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,16 @@ void			rrb(void);
 ** program()->arr should be prepared
 */
 void			resolve_atop(long len, long min, long max);
+void			resolve_atop_divide_loop(t_stack_item *comp, t_calc *c);
+void			resolve_atop_divide(long len, t_calc *c);
+void			resolve_atop_move(t_calc c);
+void			resolve_small_b3(long d1, long d2, long d3);
+void			resolve_small_b(long len, t_stack_item *top);
+void			resolve_atop3_exact(long d1, long d2, long d3);
+void			resolve_atop3(t_stack_item *top, t_calc c);
 void			resolve_btop(long len, long min, long max);
 void			resolve_lazy(void);
+
 
 /*
 ** test functions

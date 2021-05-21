@@ -6,7 +6,7 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 02:18:16 by taehokim          #+#    #+#             */
-/*   Updated: 2021/05/20 02:25:53 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/20 16:14:19 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ struct	s_calc
 	long	len3;
 	long	len2;
 	long	len1;
+	long	start_alen;
+	long	start_blen;
 };
 
 struct	s_merge

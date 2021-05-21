@@ -3,7 +3,8 @@
 *.dSYM
 do_test
 push_swap
-checker
-checker*
-*.cpp
-random_numbers
+# checker
+# checker*
+# *.cpp
+# random_numbers
+# push_swap_tester.bash

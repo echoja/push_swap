@@ -6,38 +6,24 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 12:27:09 by taehokim          #+#    #+#             */
-/*   Updated: 2021/04/27 17:48:42 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/22 04:31:04 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include "parser.h"
-#include <errno.h>
-
-#include <string.h>
 
 int				file_open(int *fd, const char *path)
 {
-	*fd = open(path, O_RDONLY);
-	if (*fd == -1)
-		abort_file("file open failed", ERR_FILE_OPEN);
-	return (1);
+	(void)fd;
+	(void)path;
+	return (0);
 }
 
 int				safe_file_close(void)
 {
-	int	result;
-
-	if (parser()->fr.fd != -1)
-	{
-		result = close(parser()->fr.fd);
-		if (result == -1)
-			abort_parser("file close failed", ERR_FILE_CLOSE);
-		parser()->fr.fd = -1;
-	}
-	return (1);
+	return (0);
 }
 
 t_filereader	fr(const char *path)

@@ -6,7 +6,7 @@
 /*   By: taehokim <taehokim@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 13:22:29 by taehokim          #+#    #+#             */
-/*   Updated: 2021/04/13 21:14:15 by taehokim         ###   ########.fr       */
+/*   Updated: 2021/05/22 04:34:21 by taehokim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ t_str	duplicate_str(t_str str)
 	new_str.max = str.max;
 	new_str.len = str.len;
 	new_str.ptr = (char *)malloc(sizeof(char) * str.max);
+	if (!new_str.ptr)
+		exit(ERR_STR_ALLOC);
 	i = 0;
 	while (i < str.len)
 	{
